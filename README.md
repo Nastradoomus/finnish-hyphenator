@@ -73,18 +73,18 @@ The unreleased development files can be obtained by:
 
 2.  Call the plugin:
 
-        ```javascript
-        var finHyph = new FinnishHyphenator();
-        var hyphenated = finHyph.hyphenateText("Suomenkielinen teksti");
-        ```
+    ```javascript
+    var finHyph = new FinnishHyphenator();
+    var hyphenated = finHyph.hyphenateText("Suomenkielinen teksti");
+    ```
 
     OR
 
-        ```javascript
-        var finHyph = new FinnishHyphenator();
-        var elements = document.getElementsByClassName("classname");
-        finHyph.hyphenateElements(elements);
-        ```
+    ```javascript
+    var finHyph = new FinnishHyphenator();
+    var elements = document.getElementsByClassName("classname");
+    finHyph.hyphenateElements(elements);
+    ```
 
 #### ES6
 
