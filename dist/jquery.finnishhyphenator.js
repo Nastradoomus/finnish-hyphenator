@@ -6,7 +6,7 @@
  * tavuttaja, vaan tavuttaa varmimmat tapaukset. Mielummin
  * tavuttaja jättää tavuttamatta kuin tavuttaa epävarman paikan.
  *
- * 
+ *
  * Hyphenation rules:
  *
  * [1] Tavuraja on aina konsonantin ja vokaalin yhdistelmän edellä
@@ -17,8 +17,7 @@
  *
  * Author: Veikko Karsikko
  */
-;(function(window) {
-
+(function (window) {
 	/**
 	 * Constructor
 	 */
@@ -27,18 +26,24 @@
 		this.consonants = "bcdfghjklmnpqrstvwxyz";
 		this.hyphMark = "\u00AD";
 		// construct regExps only once
-		this.rule1RegExp = new RegExp("[" + this.consonants + "][" + this.vowels + "]", "gi");
-		this.endReg = new RegExp("[" + this.consonants + this.vowels + "]{2}$", "i");
+		this.rule1RegExp = new RegExp(
+			"[" + this.consonants + "][" + this.vowels + "]",
+			"gi"
+		);
+		this.endReg = new RegExp(
+			"[" + this.consonants + this.vowels + "]{2}$",
+			"i"
+		);
 		this.wrapperElement = document.createElement("div");
 	}
 
 	/**
 	 * Adds hyphen to text if first part matches endReg
 	 */
-	FinnishHyphenator.prototype.addHyphen = function(text, idx) {
+	FinnishHyphenator.prototype.addHyphen = function (text, idx) {
 		var firstPart = text.slice(0, idx);
 		if (this.endReg.exec(firstPart)) {
-			return (text.slice(0, idx) + this.hyphMark + text.slice(idx));
+			return text.slice(0, idx) + this.hyphMark + text.slice(idx);
 		} else {
 			return false;
 		}
@@ -47,7 +52,7 @@
 	/**
 	 * Hyphenates JQuery element contents
 	 */
-	FinnishHyphenator.prototype.hyphenateElement = function(el) {
+	FinnishHyphenator.prototype.hyphenateElement = function (el) {
 		for (var i = 0; i < el.childNodes.length; i++) {
 			var node = el.childNodes[i];
 			if (node.nodeType === 3) {
@@ -59,7 +64,7 @@
 		}
 	};
 
-	FinnishHyphenator.prototype.hyphenateElements = function(els) {
+	FinnishHyphenator.prototype.hyphenateElements = function (els) {
 		for (var i = 0; i < els.length; i++) {
 			this.hyphenateElement(els[i]);
 		}
@@ -68,7 +73,7 @@
 	/**
 	 * Hyphenates text block
 	 */
-	FinnishHyphenator.prototype.hyphenateText = function(text) {
+	FinnishHyphenator.prototype.hyphenateText = function (text) {
 		var hyphenated = text;
 		var hyphPositions = [];
 
@@ -90,8 +95,8 @@
 	};
 
 	window.FinnishHyphenator = FinnishHyphenator;
-
 })(window);
+
 /*!
  * Jquery Plugin for Finnish Hyphenator
  * 
